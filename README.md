@@ -10,7 +10,9 @@ Project 3 - Version Control with Git & Github
 This project is a practical example of the commands used to create branches, commits, and merges using Git & Github for version control.
 
 ### Files used
-Include the files used
+bikeshare.py
+README.md
+.gitignore
 
 ### Credits
 It's important to give proper credit. Add links to any repo that inspired you or blogposts you consulted.
