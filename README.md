@@ -5,8 +5,9 @@
 
 ### Project Title
 Project 3 - Version Control with Git & Github
+
 ### Description
-Describe what your project is about and what it does
+This project is a practical example of the commands used to create branches, commits, and merges using Git & Github for version control.
 
 ### Files used
 Include the files used
