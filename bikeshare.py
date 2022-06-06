@@ -4,7 +4,7 @@ import numpy as np
 
 MONTH_DATA = ['all', 'january', 'february', 'march', 'april', 'may', 'june']
 
-DAY_DATA = ['all', 'monday', 'tuesday', 'wednesday', 'friday', 'saturday', 'sunday'] 
+DAY_DATA = ['all', 'monday', 'tuesday', 'wednesday', 'friday', 'saturday', 'sunday']
 
 CITY_DATA = { 'chicago': 'chicago.csv',
               'new york city': 'new_york_city.csv',
@@ -19,33 +19,33 @@ def get_filters():
         (str) month - name of the month to filter by, or "all" to apply no month filter
         (str) day - name of the day of week to filter by, or "all" to apply no day filter
     """
-    print('Hello! Let\'s explore some US bikeshare data!')
-    
-   
+    print('Hi! Let\'s explore some US bikeshare data!')
+
+
     # TO DO: get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
     city = input("\nWhat is the name of the city that you will be analysing? (Choose between chicago, new york city, washington)\n")
     while city.lower() not in CITY_DATA:
         print("We do not have data for inputted city, please try again")
         city = input("\nWhat is the name of the city that you will be analysing? (Choose between chicago, new york city, washington)\n")
-            
+
     print('Your selection is: ', city)
-    
+
     # TO DO: get user input for month (all, january, february, ... , june)
     month = input("\nWhat month would you like to filter to? (You may choose from january to june, or alternatively filter to 'all' for no filter)\n")
     while month.lower() not in MONTH_DATA:
-        print("We do not have data for inputted month please try again")
+        print("We might not have data for the inputted month, please try again")
         month = input("\nWhat month would you like to filter to? (You may choose from january to june, or alternatively filter to 'all' for no filter)\n")
-            
+
     print('Your selection is: ', month)
-    
+
     # TO DO: get user input for day of week (all, monday, tuesday, ... sunday)
     day = input("\nWhich day of the week would you like to filter to? (Choose any day of the week except 'thursday', or alternatively 'all' for no filter)\n")
     while day.lower() not in DAY_DATA:
         print("We do not have data for that inputted day please try again")
         day = input("\nWhich day of the week would you like to filter to? (Choose any day of the week except 'thursday', or alternatively 'all' for no filter)\n")
-  
+
     print('Your selection is: ', day)
-    
+
     print('-'*40)
     return city, month, day
 
@@ -61,7 +61,7 @@ def load_data(city, month, day):
     Returns:
         df - Pandas DataFrame containing city data filtered by month and day
     """
-    
+
     #Load city data
     print("\nLoading the data.....")
     df = pd.read_csv(CITY_DATA[city.lower()])
@@ -69,18 +69,18 @@ def load_data(city, month, day):
     df['month'] = df['Start Time'].dt.month
     df['day_of_week'] = df['Start Time'].dt.weekday_name
     df['hour'] = df['Start Time'].dt.hour
-    
+
     #Filter by month
     if month != 'all':
         month = MONTH_DATA.index(month.lower())
         df = df.loc[df['month'] == month]
-        
+
     #Filter by day
     if day != 'all':
         df = df.loc[df['day_of_week'] == day.title()]
-        
+
     return df
-  
+
 
 def time_stats(df):
     """Displays statistics on the most frequent times of travel."""
@@ -170,20 +170,20 @@ def user_stats(df, city):
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
-    
-    
-def display_raw_data(df):    
-    
+
+
+def display_raw_data(df):
+
     print(df.head())
     next = 0
-    #Option to view next 5 rows
+    #Option to view next 10 rows
     while True:
-        view_raw_data = input("\nWould you like to view next 5 rows of data? 'y'or'n'.\n")
+        view_raw_data = input("\nWould you like to view next 10 rows of data? 'y'or'n'.\n")
         if view_raw_data.lower() != 'y':
             return
-        next = next + 5
-        print(df.iloc[next:next+5])
-        
+        next = next + 10
+        print(df.iloc[next:next+10])
+
 
 def main():
     while True:
@@ -195,7 +195,7 @@ def main():
         trip_duration_stats(df)
         user_stats(df, city)
         while True:
-            view_raw_data = input("\nWould you like to view next 5 rows of data? 'y'or'n'.\n")
+            view_raw_data = input("\nWould you like to view next 10 rows of data? 'y'or'n'.\n")
             if view_raw_data.lower() != 'y':
                 break
             display_raw_data(df)
