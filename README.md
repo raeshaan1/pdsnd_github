@@ -4,8 +4,7 @@
 06/06/2022
 
 ### Project Title
-Replace the Project Title
-
+Project 3 - Version Control with Git & Github
 ### Description
 Describe what your project is about and what it does
 
